@@ -1,0 +1,25 @@
+{
+  "name": "cauldron",
+  "version": "1.0.0",
+  "description": "As this is a `TypeScript` project, the easiest way is with `tsx`:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackdanismo/cauldron.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hackdanismo/cauldron/issues"
+  },
+  "homepage": "https://github.com/hackdanismo/cauldron#readme",
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
