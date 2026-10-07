@@ -31,6 +31,19 @@ export function validateContentData(
     // Store any validation errors we find.
     const errors: string[] = [];
 
+    // Unknown field validation.
+    const allowedKeys = new Set(
+        // Build a set of valid field names from the schema.
+        contentType.fields.map((field) => field.key)
+    );
+
+    // Check every key submitted in the data and reject anything that isn't defined by the ContentType.
+    for (const key of Object.keys(data)) {
+        if (!allowedKeys.has(key)) {
+            errors.push(`${key} is not a valid field.`);
+        }
+    }
+
     /*
      * Loop through every field defined in the ContentType.
      *
