@@ -3,8 +3,12 @@ import Fastify from "fastify";
 import type { ContentEntry } from "./content/content-types";
 import { createContentEntry } from "./content/content-service";
 import { getContentEntry } from "./content/content-store";
+import { seedContentTypes } from "./seed";
 
 const app = Fastify();
+
+// Seed the CMS with starter content types.
+seedContentTypes();
 
 /*
  * Create a new content entry.
