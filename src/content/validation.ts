@@ -124,11 +124,19 @@ export function validateContentData(
         }
 
         /*
-         * If the field expects a date, check that the value
-         * is an instance of JavaScript's Date object.
-         */
-        if (field.type === "date" && !(value instanceof Date)) {
-            errors.push(`${field.key} must be a Date.`);
+        * If the field expects a date, make sure the value
+        * is a valid date string.
+        *
+        * JSON sends dates as strings, for example:
+        * "2026-10-08T08:00:00.000Z"
+        */
+        if (field.type === "date") {
+            if (
+                typeof value !== "string" ||
+                Number.isNaN(Date.parse(value))
+            ) {
+                errors.push(`${field.key} must be a valid date.`);
+            }
         }
     }
 
