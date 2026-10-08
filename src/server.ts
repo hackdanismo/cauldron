@@ -1,6 +1,6 @@
 import Fastify from "fastify";
 
-import type { ContentEntry } from "./content/content-types";
+import type { CreateContentEntryInput } from "./content/content-types";
 import { createContentEntry } from "./content/content-service";
 import { getContentEntry } from "./content/content-store";
 import { seedContentTypes } from "./seed";
@@ -14,7 +14,7 @@ seedContentTypes();
  * Create a new content entry.
  */
 app.post("/entries", async (request, reply) => {
-    const entry = request.body as ContentEntry;
+    const entry = request.body as CreateContentEntryInput;
 
     const errors = createContentEntry(entry);
 

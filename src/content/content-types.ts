@@ -54,3 +54,9 @@ export interface ContentEntry {
     // When the content was updated.
     updatedAt: Date;
 }
+
+export interface CreateContentEntryInput {
+    id: string;
+    contentTypeId: string;
+    data: Record<string, unknown>;
+}

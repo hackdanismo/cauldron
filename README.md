@@ -37,7 +37,7 @@ This means Fastify is running correctly, but the `/` has no route defined.
 With the server running on port `3000`, we can sent a `POST` request from the terminal using `cURL`:
 
 ```shell
-curl -i -X POST http://localhost:3000/entries \
+$ curl -i -X POST http://localhost:3000/entries \
   -H "Content-Type: application/json" \
   -d '{
     "id": "123",
@@ -61,4 +61,10 @@ content-length: 198
 Date: Thu, 08 Oct 2026 08:39:06 GMT
 Connection: keep-alive
 Keep-Alive: timeout=72
+```
+
+We can also confirm the article was saved:
+
+```shell
+$ curl -i http://localhost:3000/entries/123
 ```
