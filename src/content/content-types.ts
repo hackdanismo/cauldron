@@ -56,7 +56,6 @@ export interface ContentEntry {
 }
 
 export interface CreateContentEntryInput {
-    id: string;
     contentTypeId: string;
     data: Record<string, unknown>;
 }

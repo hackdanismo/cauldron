@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 import type {
     ContentEntry,
     CreateContentEntryInput,
@@ -33,7 +35,7 @@ export function createContentEntry(
     const now = new Date();
 
     const entry: ContentEntry = {
-        id: input.id,
+        id: randomUUID(),
         contentTypeId: input.contentTypeId,
         data: input.data,
         createdAt: now,
