@@ -16,11 +16,11 @@ seedContentTypes();
 app.post("/entries", async (request, reply) => {
     const entry = request.body as CreateContentEntryInput;
 
-    const errors = createContentEntry(entry);
+    const result = createContentEntry(input);
 
-    if (errors.length > 0) {
+    if (!result.success) {
         return reply.status(400).send({
-            errors,
+            errors: result.errors,
         });
     }
 

@@ -12,15 +12,28 @@ import {
 
 import { validateContentData } from "./validation";
 
+type CreateContentEntryResult =
+    | {
+        success: true;
+        entry: ContentEntry;
+    }
+    | {
+        success: false;
+        errors: string[];
+    };
+
 export function createContentEntry(
     input: CreateContentEntryInput
-): string[] {
+): CreateContentEntryResult {
     const contentType = getContentType(input.contentTypeId);
 
     if (!contentType) {
-        return [
-            `Content type "${input.contentTypeId}" does not exist.`,
-        ];
+        return {
+            success: false,
+            errors: [
+                `Content type "${input.contentTypeId}" does not exist.`,
+            ],
+        };
     }
 
     const errors = validateContentData(
@@ -29,7 +42,10 @@ export function createContentEntry(
     );
 
     if (errors.length > 0) {
-        return errors;
+        return {
+            success: false,
+            errors,
+        };
     }
 
     const now = new Date();
@@ -44,5 +60,8 @@ export function createContentEntry(
 
     saveContentEntry(entry);
 
-    return [];
+    return {
+        success: true,
+        entry,
+    };
 }
